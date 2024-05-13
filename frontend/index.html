@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Schülerverwaltung</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url: 'http://localhost:3000/api/schueler',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    data.forEach(function(schueler) {
+                        $('#schuelerTabelle').append('<tr>' +
+                            '<td>' + schueler.name + '</td>' +
+                            '<td>' + schueler.alter + '</td>' +
+                            '<td>' + schueler.fach + '</td>' +
+                            '<td>Aktionen</td>' +
+                            '</tr>');
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error loading data:', error);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>Schülerverwaltungssystem</h1>
+<form id="schuelerForm">
+    <input type="text" id="name" placeholder="Name">
+    <input type="number" id="alter" placeholder="Alter">
+    <input type="text" id="fach" placeholder="Studienfach">
+    <button type="button" onclick="addSchueler(event)">Hinzufügen</button>
+</form>
+<table id="schuelerTabelle">
+    <tr>
+        <th>Name</th>
+        <th>Alter</th>
+        <th>Studienfach</th>
+        <th>Aktionen</th>
+    </tr>
+</table>
+<footer>
+    &copy; 2024 Schülerverwaltung. Alle Rechte vorbehalten.
+</footer>
+<script src="js/app.js"></script>
+</body>
+</html>
