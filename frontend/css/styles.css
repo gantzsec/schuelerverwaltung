@@ -68,6 +68,24 @@ th {
     color: white;
 }
 
+/* Hinzugefügtes CSS */
+#edit-btn, #save-btn, #delete-btn {
+    width: 100px;
+    float: left;
+}
+
+#edit-btn, #save-btn {
+    margin-right: 10px;
+}
+
+#delete-btn {
+    background-color: #FFA94C;
+}
+
+#delete-btn:hover {
+    background-color: #e68a2e;
+}
+
 /* Stilregelungen für den Footer */
 footer {
     text-align: center;

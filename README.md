@@ -1,1 +1,1 @@
-Server starten: ``node server.js`` in backend/
+https://github.com/gantzsec/schuelerverwaltung

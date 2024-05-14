@@ -14,10 +14,15 @@
                 success: function(data) {
                     data.forEach(function(schueler) {
                         $('#schuelerTabelle').append('<tr>' +
+                            '<td style="display: none">' + schueler.id + '</td>' +
                             '<td>' + schueler.name + '</td>' +
                             '<td>' + schueler.alter + '</td>' +
                             '<td>' + schueler.fach + '</td>' +
-                            '<td>Aktionen</td>' +
+                            '<td>' +
+                            '<button id="edit-btn" onclick="editSchueler(event)">Bearbeiten</button>' +
+                            '<button id="save-btn" style="display:none" onclick="saveSchueler(event)">Save</button>' +
+                            '<button id="delete-btn" onclick="deleteSchueler(event)">Löschen</button>' +
+                            '</td>' +
                             '</tr>');
                     });
                 },
@@ -41,7 +46,7 @@
         <th>Name</th>
         <th>Alter</th>
         <th>Studienfach</th>
-        <th>Aktionen</th>
+        <th id="table-actions">Aktionen</th>
     </tr>
 </table>
 <footer>
