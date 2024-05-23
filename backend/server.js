@@ -24,6 +24,7 @@ app.get('/api/schueler/:id', (req, res) => {
     const schuelerId = parseInt(req.params.id);
     const gefundenerSchueler = schueler.find(s => s.id === schuelerId);
     if (gefundenerSchueler) {
+        console.log("Aufruf: ", gefundenerSchueler);
         res.status(200).json(gefundenerSchueler);
     } else {
         res.status(404).send('Schüler nicht gefunden');
@@ -32,6 +33,7 @@ app.get('/api/schueler/:id', (req, res) => {
 
 // Endpoint zum Hinzufügen von Schülern
 app.post('/api/schueler/add', (req, res) => {
+    console.log("Erstellung: ", req.body);
     const neuerSchueler = req.body;
 
     if (!neuerSchueler || !neuerSchueler.name || !neuerSchueler.alter || !neuerSchueler.fach) {
@@ -51,7 +53,7 @@ app.post('/api/schueler/add', (req, res) => {
 
 // Endpoint zum Ändern von Schülerdaten
 app.put('/api/schueler/update/:id', (req, res) => {
-    console.log(req.params, req.body)
+    console.log("Änderung: ", req.body);
 
     // Die Daten des gefundenen Schülers werden ausgetauscht
     schueler.find(function(s) {
